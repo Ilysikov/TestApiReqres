@@ -2,6 +2,7 @@ import pytest
 from http import HTTPStatus
 from crud_request import CRUD
 from models.questions import ValidUser, UpdateValidData
+import pytest
 from jsonschema import validate
 from utils.member import id
 
