@@ -7,7 +7,6 @@ from jsonschema import validate
 from utils.member import id
 
 
-
 class TestQuestions:
     crud = CRUD()
 
@@ -50,7 +49,7 @@ class TestQuestions:
     def test_patch_users(self):
         user = UpdateValidData()
         user.new_data()
-        check = {"email":user.model_dump().get("email")}
+        check = {"email": user.model_dump().get("email")}
         response = self.crud.patch_users(params={"id": str(id.rid())}, data=check)
         response_json = response.json()
 
