@@ -1,9 +1,5 @@
 from http import HTTPStatus
-
-import allure
-import pytest
-
-from client_questions import CRUD
+from crud_request import CRUD
 from models.questions import ValidUser, UpdateValidData
 from jsonschema import validate
 from utils.member import id

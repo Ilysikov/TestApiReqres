@@ -1,9 +1,6 @@
 import random
-from typing import TypedDict, ForwardRef
-
-from pydantic import BaseModel, Field, RootModel
-
-from utils.random_data import constant_support, random_data, UserData, user_data
+from pydantic import BaseModel, Field
+from utils.random_data import constant_support, user_data
 
 
 class ValidData(BaseModel):
@@ -32,16 +29,3 @@ class ValidUser(BaseModel):
     support: object = Field(
         alias='support',
         default_factory=constant_support)
-
-#
-# class UserDict(TypedDict):
-#     data: object
-#     support: object
-#
-#
-# class UpdateUser(BaseModel):
-#     data: UpdateValidData
-#
-#
-# class DefaultUserList(RootModel):
-#     root: list[ValidUser]

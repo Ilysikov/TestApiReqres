@@ -1,25 +1,7 @@
-# from random import choice, randint
 import random
 from datetime import datetime
-from string import ascii_letters, digits
-from string import ascii_letters, ascii_lowercase, hexdigits
+from string import digits, ascii_lowercase, hexdigits
 
-
-# def random_number(start: int = 718, end: int = 1000) -> int:
-#     return randint(start, end)
-#
-#
-# def random_string(start: int = 9, end: int = 15) -> str:
-#     return ''.join(choice(ascii_letters + digits) for _ in range(randint(start, end)))
-#
-#
-# def random_list_of_strings(start: int = 9, end: int = 15) -> list[str]:
-#     return [random_string() for _ in range(randint(start, end))]
-#
-# def random_user_data():
-#     f={'id': str(random_number()), 'email': f'{random_string()}@reqres.in', 'first_name': 'Charles', 'last_name': 'Morris',
-#      'avatar': 'https://reqres.in/img/faces/5-image.jpg'}
-#     return {"average": str(random_string()), "reviews": random_string()}
 
 class RandomInputBase:
 
@@ -232,11 +214,6 @@ class UserData(
 
 
 user_data = UserData()
-
-print(user_data.valid_last_name())
-print(user_data.valid_last_name())
-
-random_data = user_data.my_dict()
 
 
 def constant_support():
