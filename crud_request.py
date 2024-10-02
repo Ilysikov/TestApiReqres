@@ -2,7 +2,8 @@ import httpx
 
 
 class CRUD:
-    BASE_URL = "https://reqres.in"
+    def __init__(self, url):
+        self.BASE_URL = url
 
     def get_users(self, params):
         return httpx.get(self.BASE_URL + "/api/users/", params=params)
@@ -18,3 +19,6 @@ class CRUD:
 
     def delete_users(self, params):
         return httpx.delete(self.BASE_URL + "/api/users/", params=params)
+
+    def get_none_params(self):
+        return httpx.get(self.BASE_URL)

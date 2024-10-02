@@ -8,7 +8,7 @@ from utils.member import id
 
 
 class TestQuestions:
-    crud = CRUD()
+    crud = CRUD("https://reqres.in")
 
     def test_get_users(self):
         response = self.crud.get_users(params={"id": str(id.rid())})
