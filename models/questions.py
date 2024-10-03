@@ -50,48 +50,52 @@ class ValidFuturama(BaseModel):
         Validate name.
 
         The name must start with a capital letter and contain only letters
-        and spaces. The name must also contain only one word starting with a capital letter.
+        and spaces. The name can contain multiple words, each starting with a capital letter.
 
         Args:
         name (str): The name to be validated.
 
         Returns:
-        Match[str] | ValueError: The result of the validation.
+        Match[str] | ValueError: The result of the validation or an error.
         """
-        # The pattern
+        # The pattern must allow multiple words with capital letters
+        pattern = r"^[A-Z][a-z]+(?: [A-Z][a-z]+)*(?: [A-Z]\.)?$"
+
         name_list = name.split()
+
         capitalized_words = [word for word in name_list if word[0].isupper()]
-        # The pattern must match the whole string
-        pattern = r"^[A-Z][a-z]+( [A-Z][a-z]+)*( [A-Z][a-z]+)*( [A-Z]\.)?$"
-        # Get the match
-        answer = re.match(pattern, name) if len(capitalized_words) == 1 and bool(
+
+        # Validate the name with the pattern
+        answer = re.match(pattern, name)
+
+        answer = answer if len(capitalized_words) == 1 and bool(
             re.match(pattern=r"^[A-Z][a-z]?$", string=name_list[0])) else None
-        if answer:
-            # If the name is valid, return the match
-            return answer
-        else:
-            # If the name is invalid, return a ValueError
-            return ValueError('Invalid name')
 
-    def valid_url(cls, url: str) -> Match[str] | ValueError:
-        """
-        Validate url.
-
-        The url must start with https://.
-
-        Args:
-        url (str): The url to be validated.
-
-        Returns:
-        Match[str] | ValueError: The result of the validation.
-        """
-        pattern = r"^https://"
-        # Try to match the pattern with the url
-        answer = re.match(pattern, url)
-        # If the pattern does not match the url, return a ValueError with a description of the error
-        return answer if answer else ValueError('Invalid url')
+        return answer if answer else ValueError('Invalid name')
 
     @field_validator('url')
+    @classmethod
+    def valid_url(cls, url: str) -> Match[str] | ValueError:
+        """
+        Validate URL.
+
+        The URL must start with https:// and follow valid URL structure.
+        If the URL is valid, return the URL.
+        If the URL is invalid, return a ValueError with a description of the error.
+
+        Args:
+        url (str): The URL to be validated.
+
+        Returns:
+        str | ValueError: The validated URL or an error if the validation fails.
+        """
+        # Регулярное выражение для проверки корректности URL
+        pattern = r"^https://[a-zA-Z0-9.-]+(?:/[^\s<>#]*)?$"
+
+        return url if re.match(pattern, url) else ValueError("Invalid URL")
+
+    @field_validator('url')
+    @classmethod
     def valid_url_2(cls, url: str) -> str | ValueError:
         """
         Validate url.
@@ -110,27 +114,25 @@ class ValidFuturama(BaseModel):
         str | ValueError: The result of the validation.
         """
         try:
+
             # Try to get the link
             response = requests.get(url)
             if response.status_code == 200:
+
                 # If the link is valid, return the link
                 return url
             elif response.status_code == 404:
+
                 # If the link returns a 404 error, return a ValueError with a description of the error
                 return ValueError("Ссылка не найдена (код 404)")
             else:
+
                 # If the link returns any other code, return a ValueError with a description of the error
                 return ValueError(f"Ссылка вернула код {response.status_code}")
         except requests.exceptions.RequestException as e:
+
             # If any other error occurs (e.g. the link is unreachable), return a ValueError with a description of the error
             return ValueError(f"Ошибка при попытке доступа к ссылке: {e}")
-
-
-INFO = {
-    "synopsis": "Филипп Дж. Фрай - 25-летний курьер, живущий в Нью-Йорке, которого заморозили криогенным способом в Новый год 1999 года на 1000 лет, где он просыпается в Нью-Йорке 31 декабря 2999 года. Там он встречает Турангу Лилу, жесткую, но любящую, прекрасную одноглазую инопланетянку; и Бендера, работающего на алкоголе робота-сгибателя, который пристрастился к спиртному, сигарам, воровству и другим вещам. В конце концов, они все встречаются с Пра-Пра-Пра-Пра-Пра Фрая, Хьюбертом Дж. Фарнсвортом. Фарнсворт - очень старый человек, который является гением, но очень дряхлым и забывчивым. Фрай, Лила и Бендер в конечном итоге работают в службе доставки Фарнсворта Planet Express. Затем они встречают своих коллег; Эми Вонг, которая является марсианским стажером, которая происходит из богатой семьи, но все еще человек, который очень хипстер. Также есть Гермес Конрад, который управляет службой доставки и довольно строг. Гермес кажется ямайцем по голосу и внешности. И, наконец, есть доктор Джон Зойдберг, инопланетянин, похожий на лобстера, который является врачом команды. К сожалению, он ничего не знает о людях. Фрай, Лила, Бендер, а иногда Эми и доктор Зойдберг путешествуют по вселенной, рискуя жизнью и здоровьем, доставляя посылки и выполняя благотворительные задания для налоговых вычетов.",
-    "yearsAired": "1999–2013", "creators": [{"name": "Дэвид Икс. Коэн", "url": "http://www.imdb.com/name/nm0169326"},
-                                            {"name": "Мэтт Грёнинг", "url": "http://www.imdb.com/name/nm0004981"}],
-    "id": 1}
 
 
 class ModelItem(BaseModel):
@@ -138,7 +140,3 @@ class ModelItem(BaseModel):
     yearsAired: str
     creators: object = Field(alias='creators', default_factory=List[ValidFuturama])
     id: int
-
-
-class ModelList(BaseModel):
-    results: List[ModelItem]
