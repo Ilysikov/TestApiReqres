@@ -2,9 +2,9 @@ pipeline {
     agent any
     stages {
         stage('Checkout') {
-            steps {
+            steps {echo 'Checking out the code...'
                 // Clone the repository
-                git 'https://github.com/yourusername/your-python-repo.git'
+                git branch: 'Ex', url:  'https://github.com/Ilysikov/TestApiReqres.git'
             }
         }
     stages {
@@ -23,4 +23,4 @@ pipeline {
             }
         }
     }
-}
+
