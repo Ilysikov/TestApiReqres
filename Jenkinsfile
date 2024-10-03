@@ -7,7 +7,7 @@ pipeline {
 //                 // Clone the repository
 //                 git branch: 'Ex', url: 'https://github.com/Ilysikov/TestApiReqres.git'
 //             }
-//         }
+        }
         stage('Build') {
             steps {
                 script {
