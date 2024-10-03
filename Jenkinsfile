@@ -1,13 +1,13 @@
 pipeline {
     agent any
         stages {
-                stage('Checkout') {
-                    steps {
-                        echo 'Checking out the code...'
-                        // Clone the repository
-                        git branch: 'Ex', url: 'https://github.com/Ilysikov/TestApiReqres.git'
-                    }
-                }
+//                 stage('Checkout') {
+//                     steps {
+//                         echo 'Checking out the code...'
+//                         // Clone the repository
+//                         git branch: 'Ex', url: 'https://github.com/Ilysikov/TestApiReqres.git'
+//                     }
+//                 }
                 stage('Build') {
                     steps {
                         script {
