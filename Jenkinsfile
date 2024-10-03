@@ -17,10 +17,20 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+
                 script {
-                    def myDocker = docker // Используйте переменную для доступа к Docker
-                    myDocker.image('my-app-image').run('-p 8080:8080')
-                }
+                    // Stop and remove the existing container
+                    sh 'docker stop myapp || true'
+                    sh 'docker rm myapp || true'
+
+                    // Build a new Docker image
+                    sh 'docker build -t myapp:latest .'
+
+                    // Run the new container
+                    sh 'docker run -d --name myapp -p 80:80 myapp:latest'
+
+    }
+}
             }
         }
     }
