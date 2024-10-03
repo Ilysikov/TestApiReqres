@@ -7,6 +7,13 @@ pipeline {
                 git branch: 'Ex', url: 'https://github.com/Ilysikov/TestApiReqres.git'
             }
         }
+        stage('Build') {
+            steps {
+                script {
+                    docker.build('my-app-image')
+                }
+            }
+        }
         stage('Deploy') {
              steps {
                 script {
@@ -18,17 +25,10 @@ pipeline {
                         sh 'docker build -t myapp:latest .'
 
                         // Run the new container
-                        sh 'docker run -d --name myapp -p 80:80 myapp:latest'
+                        sh 'docker run -d --name myapp -p 90:80 myapp:latest'
                         }
                     }
                 }
-        stage('Deploy') {
-            steps {
-                script {
-                    def myDocker = docker // Используйте переменную для доступа к Docker
-                    myDocker.image('my-app-image').run('-p 8080:8080')
-                        }
-                    }
-                }
+
         }
     }
