@@ -28,7 +28,6 @@ RUN poetry install --no-interaction --no-cache
 
 COPY . /app
 
-ENV PYTHONPATH .
 
 EXPOSE 5000
 
