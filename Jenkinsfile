@@ -19,8 +19,10 @@ pipeline {
             steps {
                 script {
                     docker.image('my-app-image').run('-p 8080:8080')
-                }
-            }
-        }
+                        }
+                   }
+                        }
     }
+   }
+   }
 
