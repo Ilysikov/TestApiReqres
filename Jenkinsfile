@@ -27,7 +27,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    docker.build('my-app-image')
+                    sudo.docker.build('my-app-image')
                 }
             }
         }
