@@ -28,7 +28,7 @@ RUN poetry install --no-interaction --no-cache
 
 COPY . /app
 
-
+EXPOSE 8080
 EXPOSE 50000
 
 # CMD [ "poetry", "run", "python", "-m", "pytest", "run" ]
