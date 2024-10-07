@@ -14,7 +14,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    sh 'git clone -b Ex https://github.com/Ilysikov/TestApiReqres.git'
+                    sh 'git clone --single-branch Ex https://github.com/Ilysikov/TestApiReqres.git'
                 }
             }
         }
