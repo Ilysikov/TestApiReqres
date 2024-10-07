@@ -39,8 +39,7 @@ pipeline {
         stage('Deploy') {
              steps {
                 script {
-
-                        sh 'docker run -d --name myapp -p 80:80 my-app-image'
+                        sh 'docker run -d --name myapp -p 2375:2375 my-app-image'
                         }
                     }
                 }
