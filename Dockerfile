@@ -26,7 +26,7 @@ COPY poetry.lock pyproject.toml ./
 
 
 RUN poetry install --no-interaction --no-cache
-VOLUME /private/var/run/docker.sock:/private/var/run/docker.sock
+VOLUME /var/run/docker.sock:/var/run/docker.sock
 COPY . /app
 
 EXPOSE 8080
