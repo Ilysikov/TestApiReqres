@@ -31,6 +31,4 @@ COPY . /app
 EXPOSE 8080
 EXPOSE 50000
 
-# CMD [ "poetry", "run", "python", "-m", "pytest", "run" ]
-# CMD ["poetry", "run", "python", "-m", "localhost"]
 CMD [ "python3", "./app.py"]
