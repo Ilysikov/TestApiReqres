@@ -31,7 +31,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'docker build docker/my-app-image .'
+                    sh 'docker build -p 2375:2375 docker/my-app-image .'
                 }
             }
         }
