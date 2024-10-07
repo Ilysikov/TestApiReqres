@@ -29,7 +29,7 @@ RUN poetry install --no-interaction --no-cache
 VOLUME /var/run/docker.sock:/var/run/docker.sock
 COPY . /app
 
-EXPOSE 8080
-EXPOSE 50000
+# EXPOSE 8080
+# EXPOSE 50000
 
 CMD [ "python3", "./app.py"]
