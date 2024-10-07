@@ -1,9 +1,9 @@
 pipeline {
-    agent {
-        dockerfile {
-            label 'docker'
-            }
-        }
+    agent any //{
+//         dockerfile {
+//             label 'docker'
+//             }
+//         }
     stages {
         stage('Checkout') {
             steps {
