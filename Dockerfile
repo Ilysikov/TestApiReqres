@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:lts AS builder
+FROM python3.12 AS builder
 LABEL "docker"
 
 ENV POETRY_VERSION=1.8.3
@@ -19,11 +19,7 @@ ENV PATH="${PATH}:${POETRY_VENV}/bin"
 
 WORKDIR /app
 
-
-
-
 COPY poetry.lock pyproject.toml ./
-
 
 RUN poetry install --no-interaction --no-cache
 VOLUME /var/run/docker.sock:/var/run/docker.sock
