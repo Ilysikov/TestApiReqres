@@ -1,4 +1,4 @@
-FROM python:3.12 AS builder
+FROM jenkins/jenkins:lts AS builder
 
 ENV POETRY_VERSION=1.8.3
 ENV POETRY_VENV=/opt/poetry-venv
