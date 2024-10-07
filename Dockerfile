@@ -33,3 +33,4 @@ EXPOSE 8080
 EXPOSE 50000
 
 CMD [ "python3", "./app.py"]
+VOLUME ["/var/run/docker.sock:/var/run/docker.sock"]
