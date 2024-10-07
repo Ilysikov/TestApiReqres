@@ -4,11 +4,18 @@ pipeline {
 //             label 'docker'
 //             }
 //         }
-    stages {
+    stages //{
+//         stage('Checkout') {
+//             steps {
+//                 echo 'Checking out the code...'
+//                 git branch: 'Ex', url: 'https://github.com/Ilysikov/TestApiReqres.git'
+//             }
+        }
         stage('Checkout') {
             steps {
-                echo 'Checking out the code...'
-                git branch: 'Ex', url: 'https://github.com/Ilysikov/TestApiReqres.git'
+                script {
+                    sh 'git clone -b Ex https://github.com/Ilysikov/TestApiReqres.git'
+                }
             }
         }
 //         stage('Initialize') {
