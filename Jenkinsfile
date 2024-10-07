@@ -28,13 +28,21 @@ pipeline {
 //                 }
 //             }
 //         }
-//         stage('Build') {
-//             steps {
-//                 script {
-//                     sh 'docker build -p 2375:2375 docker/my-app-image .'
-//                 }
-//             }
-//         }
+        stage('Build') {
+            steps {
+                script {
+                    sh 'poetry install'
+                }
+            }
+        }
+
+        stage('Run') {
+            steps {
+                script {
+                    sh 'poetry run'
+                }
+            }
+        }
 
         stage('Deploy') {
              steps {
