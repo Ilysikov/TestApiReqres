@@ -31,7 +31,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    docker.build('my-app-image')
+                    sh 'docker build docker/my-app-image .'
                 }
             }
         }
@@ -39,7 +39,7 @@ pipeline {
         stage('Deploy') {
              steps {
                 script {
-                        sh 'docker run -d --name myapp -p 2375:2375 my-app-image'
+                        sh 'docker run -d docker/my-app-image'
                         }
                     }
                 }
