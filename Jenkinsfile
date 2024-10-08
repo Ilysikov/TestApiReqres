@@ -38,6 +38,15 @@ pipeline {
                         }
                     }
                 }
+        stage('delete') {
+             steps {
+                script {
+                        sh 'docker stop jenkins/my-app-image'
+                        sh 'docker rm jenkins/my-app-image'
+                        }
+                    }
+                }
+
 
         }
     }
