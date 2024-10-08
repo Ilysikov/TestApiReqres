@@ -6,7 +6,7 @@ from pydantic import ValidationError
 from crud_request import CRUD
 from models.questions import ValidFuturama, ModelItem
 from utils.member import id
-
+import allure
 
 class TestFuturama:
     crud = CRUD("https://api.sampleapis.com/futurama/info")

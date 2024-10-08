@@ -5,6 +5,7 @@ from models.questions import ValidUser, UpdateValidData
 import pytest
 from jsonschema import validate
 from utils.member import id
+import allure
 
 
 class TestQuestions:
