@@ -1,4 +1,4 @@
-FROM python3.12 AS builder
+FROM 3.12-slim-bullseye AS builder
 
 ENV POETRY_VERSION=1.8.3
 ENV POETRY_VENV=/opt/poetry-venv
