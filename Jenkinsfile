@@ -27,7 +27,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'docker build -t docker/my-app-image .'
+                    sh 'sudo docker build -t docker/my-app-image .'
                 }
             }
         }
