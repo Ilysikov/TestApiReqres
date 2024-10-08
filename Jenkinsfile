@@ -7,20 +7,11 @@ pipeline {
                 git branch: 'Ex', url: 'https://github.com/Ilysikov/TestApiReqres.git'
             }
         }
-        stage('Initialize') {
-            steps {
-                script {
-                    def dockerHome = tool 'docker'
-                    env.PATH = "${dockerHome}/bin:${env.PATH}"
-                }
-            }
-        }
+
         stage('Check Docker Version') {
             steps {
                 script {
-                    // Выполнение команды для проверки версии Docker
-                    def dockerVersion = sh(script: 'docker --version', returnStdout: true).trim()
-                    echo "Docker version: ${dockerVersion}"
+                    sh 'docker --version'
                 }
             }
         }
