@@ -31,13 +31,7 @@ pipeline {
                     }
                 }
 
-        stage('pytest') {
-             steps {
-                script {
-                        sh 'docker run -d -p 2375:2375 jenkins/my-app-image'
-                        }
-                    }
-                }
+
         stage('delete') {
              steps {
                 script {
