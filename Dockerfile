@@ -16,7 +16,7 @@ COPY --from=builder2 ${POETRY_VENV} ${POETRY_VENV}
 
 ENV PATH="${PATH}:${POETRY_VENV}/bin"
 
-WORKDIR /app
+# WORKDIR /app
 
 COPY poetry.lock pyproject.toml ./
 
