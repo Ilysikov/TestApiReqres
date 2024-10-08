@@ -1,4 +1,4 @@
-FROM sha256:79f1a8d98db8acbb119e6e51d97439c367f4d400fb1590f9b699c4b5ca73ba7e AS builder
+FROM python:slim AS builder
 
 ENV POETRY_VERSION=1.8.3
 ENV POETRY_VENV=/opt/poetry-venv
