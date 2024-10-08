@@ -26,7 +26,7 @@ pipeline {
         stage('Deploy') {
              steps {
                 script {
-                        sh 'docker run -d -p 2375:2375 jenkins/my-app-image'
+                        sh 'docker run -d -name runtest -p 2375:2375 jenkins/my-app-image'
                         }
                     }
                 }
@@ -35,8 +35,8 @@ pipeline {
         stage('delete') {
              steps {
                 script {
-                        sh 'docker stop jenkins/my-app-image'
-                        sh 'docker rm jenkins/my-app-image'
+                        sh 'docker stop runtest'
+                        sh 'docker rm runtest'
                         }
                     }
                 }
