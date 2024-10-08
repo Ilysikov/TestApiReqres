@@ -20,7 +20,9 @@ WORKDIR /app
 
 COPY poetry.lock pyproject.toml ./
 
+RUN poetry lock --no-update
 RUN poetry install --no-interaction --no-cache
+
 VOLUME /var/run/docker.sock:/var/run/docker.sock
 COPY . /app
 
