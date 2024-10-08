@@ -29,4 +29,5 @@ COPY . /app
 # EXPOSE 8080
 # EXPOSE 50000
 
-CMD [ "python3", "./app.py"]
+CMD ["python3 -m poetry run pytest --alluredir allure-results"]
+CMD ["allure serve allure-results"]
