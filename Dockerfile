@@ -24,9 +24,6 @@ RUN poetry lock --no-update
 RUN poetry install --no-interaction --no-cache
 
 VOLUME /var/run/docker.sock:/var/run/docker.sock
-COPY . /app
-
-# EXPOSE 8080
-# EXPOSE 50000
+COPY . /
 
 CMD ["python3","app.py"]
