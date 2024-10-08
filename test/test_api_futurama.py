@@ -1,17 +1,13 @@
 from http import HTTPStatus
 
+import pytest
 from jsonschema.validators import validate
-from pydantic import ValidationError
-
-from crud_request import CRUD
-from models.questions import ValidFuturama, ModelItem
-from utils.member import id
 import allure
 
-class TestFuturama:
-    crud = CRUD("https://api.sampleapis.com/futurama/info")
 
-    def test_get_futurama(self):
+class TestFuturama:
+
+    def test_get_futurama(self, crud_futurama, model_item):
         """
         Tests the /futurama/1 endpoint with a GET method.
 
@@ -20,12 +16,10 @@ class TestFuturama:
         is 200 and that the response body contains the expected keys.
 
         """
-        response = self.crud.get_none_params()
+        response = crud_futurama.get_none_params()
         response_json = response.json()
         response_json = response_json[0] if type(response_json) == list else response_json
 
         assert (response.status_code == HTTPStatus.OK)
 
-        validate(response_json, ModelItem.model_json_schema())
-
-
+        validate(response_json, model_item.model_json_schema())
