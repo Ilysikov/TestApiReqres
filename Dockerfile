@@ -1,5 +1,4 @@
 FROM python3.12 AS builder
-LABEL "docker"
 
 ENV POETRY_VERSION=1.8.3
 ENV POETRY_VENV=/opt/poetry-venv
