@@ -26,7 +26,7 @@ pipeline {
         stage('Deploy') {
              steps {
                 script {
-                        sh 'docker run -d --name runtest -p 2375:2375 jenkins/my-app-image'
+                        sh 'docker run --name runtest -p 2375:2375 jenkins/my-app-image'
                         }
                     }
                 }
