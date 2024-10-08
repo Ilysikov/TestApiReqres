@@ -18,7 +18,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'docker build -t docker/my-app-image .'
+                    sh 'docker build -t jenkins/my-app-image .'
                 }
             }
         }
