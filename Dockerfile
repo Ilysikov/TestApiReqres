@@ -17,10 +17,10 @@ COPY --from=builder2 ${POETRY_VENV} ${POETRY_VENV}
 ENV PATH="${PATH}:${POETRY_VENV}/bin"
 
 WORKDIR .
-
+RUN poetry lock --no-update
 COPY poetry.lock pyproject.toml ./
 
-# RUN poetry lock --no-update
+
 RUN poetry install --no-interaction --no-cache
 
 VOLUME /var/run/docker.sock:/var/run/docker.sock
