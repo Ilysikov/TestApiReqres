@@ -27,3 +27,4 @@ VOLUME /var/run/docker.sock:/var/run/docker.sock
 COPY . .
 
 CMD ["python3","app.py"]
+# poetry run python3 app.py
