@@ -26,5 +26,4 @@ RUN poetry install --no-interaction --no-cache
 VOLUME /var/run/docker.sock:/var/run/docker.sock
 COPY . .
 
-# CMD ["python3","app.py"]
-CMD ["pytest"]
+CMD ["python3","app.py"]
