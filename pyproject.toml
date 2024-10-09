@@ -14,6 +14,13 @@ jsonschema = "^4.23.0"
 pytest = "^8.3.2"
 allure-pytest="2.13.5"
 allure-python-commons="2.13.5"
+requests = "^2.28.1"
+typing = "^3.7.4.3"
+re = "^2.2.1"
+random = "^0.12.2"
+string = "^1.0.0"
+datetime = "^5.0"
+
 
 
 [build-system]
