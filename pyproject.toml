@@ -4,6 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Ilysikov <i_lysikov@bk.ru>"]
 readme = "README.md"
+pythonpath = [".","src"]
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -13,7 +14,7 @@ jsonschema = "^4.23.0"
 pytest = "^8.3.2"
 allure-pytest="2.13.5"
 allure-python-commons="2.13.5"
-pythonpath = [".","src"]
+
 
 [build-system]
 requires = ["poetry-core"]
